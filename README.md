@@ -13,7 +13,7 @@ Diese Vorlage wurde für Eclipse erstellt. Sie können aber jede andere Entwickl
 
 Repository
 ----------
-https://inf-swe.technikum-wien.at/
+https://inf-swe-git.technikum-wien.at/
 
 Das Repository ist selbst anzulegen: 
 
@@ -22,7 +22,7 @@ Das Repository ist selbst anzulegen:
 * new repository 
 * if00x000/BIF-WS??-SWE1
 
-Das Repository hat die URL: https://if00x000@inf-swe.technikum-wien.at/r/~if00x000/BIF-WS??-SWE1.git
+Das Repository hat die URL: https://if00x000@inf-swe-git.technikum-wien.at/?r=~if00x000/BIF-WS??-SWE1.git
 
 * if00x000 ist durch Ihre if-Nummer zu ersetzen
 * BIF-WS??-SWE1 durch das Jahr (WS 14/15 -> BIF-WS14-SWE1)
@@ -31,12 +31,12 @@ Sie sollten Ihr Repository Ihren KollegInnen freigeben. Mit "git add remote" (ht
 
 Setup des Projektes
 -------------------
-https://inf-swe.technikum-wien.at/summary/BIF%2FSWE1-Java.git
+https://inf-swe-git.technikum-wien.at/summary/?r=BIF/SWE1-CS.git
 
 Laden Sie aus dem Template die Datei clone-bif-swe1-java-tempate.{ps1|sh} herunter 
 
-* Windows: https://inf-swe.technikum-wien.at/blob/BIF%2FSWE1-Java.git/master/clone-bif-swe1-java-tempate.ps1
-* Linux: https://inf-swe.technikum-wien.at/blob/BIF%2FSWE1-Java.git/master/clone-bif-swe1-java-tempate.sh
+* Windows: https://inf-swe-git.technikum-wien.at/raw/BIF/SWE1-Java.git/master/clone-bif-swe1-java-tempate.ps1
+* Linux: https://inf-swe-git.technikum-wien.at/raw/BIF/SWE1-Java.git/master/clone-bif-swe1-java-tempate.sh
 
 Starten Sie das Script mit folgenden Parametern
 
@@ -62,7 +62,7 @@ Ihre eigenen Klassen, die Sie im Rahmen der Übung implementieren, müssen ebenf
 
 Unit-Tests
 ----------
-https://inf-swe.technikum-wien.at/tree/SYSTEM%2Funit-tests.git/master/BIF-SWE1%2FJava
+https://inf-swe-git.technikum-wien.at/tree/?f=BIF-SWE1/Java&r=SYSTEM/unit-tests.git&h=master
 
 Am Jenkins wird Ihre Abgabe mit diesen Unit-Tests getestet. Diese Tests stehen Ihnen zur Verfügung. Sie können daher lokal, vorab überprüfen, ob Sie die Unit-Tests bestehen oder nicht.
 
@@ -70,7 +70,7 @@ In diesem Projekt ist auch dokumentiert, welche Interfaces Ihre Klassen implemen
 
 Jenkins
 -------
-http://inf-swe.technikum-wien.at:8080/view/BIF-SWE1/
+https://inf-swe-jenkins.technikum-wien.at/view/BIF-SWE1/
 
 Am Jenkins können Sie dann das Ergebnis Ihrer Abgabe sehen.
 

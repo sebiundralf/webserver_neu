@@ -16,6 +16,7 @@ public class UrlImpl implements Url {
     public UrlImpl(String raw)
     {
     	url = raw;
+    	
     }
 
 	@Override
@@ -27,7 +28,7 @@ public class UrlImpl implements Url {
 	@Override
 	public String getRawUrl() {
 		// TODO Auto-generated method stub
-		return null;
+		return url;
 	}
 
 	@Override

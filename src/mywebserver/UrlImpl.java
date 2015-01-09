@@ -6,14 +6,16 @@ import BIF.SWE1.interfaces.Url;
 
 public class UrlImpl implements Url {
 	
+	private String url;
+	
 	public UrlImpl()
     {
-
+		url = "";
     }
 
     public UrlImpl(String raw)
     {
-
+    	url = raw;
     }
 
 	@Override

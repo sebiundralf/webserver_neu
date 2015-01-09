@@ -11,22 +11,22 @@ import BIF.SWE1.interfaces.Url;
 public class UEB2Impl implements UEB2 {
 
 	@Override
-	public Url GetUrl(String path) {
+	public Url getUrl(String path) {
 		return new UrlImpl(path);
 	}
 
 	@Override
-	public void HelloWorld() {
+	public void helloWorld() {
 	}
 
 	@Override
-	public Request GetRequest(InputStream arg0) {
+	public Request getRequest(InputStream arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Response GetResponse() {
+	public Response getResponse() {
 		// TODO Auto-generated method stub
 		return null;
 	}

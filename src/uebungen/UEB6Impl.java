@@ -1,7 +1,9 @@
 package uebungen;
 
 import java.io.InputStream;
+import java.util.Date;
 
+import BIF.SWE1.interfaces.Plugin;
 import BIF.SWE1.interfaces.PluginManager;
 import BIF.SWE1.interfaces.Request;
 import BIF.SWE1.interfaces.UEB6;
@@ -9,17 +11,59 @@ import BIF.SWE1.interfaces.UEB6;
 public class UEB6Impl implements UEB6 {
 
 	@Override
-	public void HelloWorld() {
+	public void helloWorld() {
 	}
 
 	@Override
-	public PluginManager GetPluginManager() {
+	public PluginManager getPluginManager() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Request GetRequest(InputStream arg0) {
+	public Request getRequest(InputStream arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getNaviUrl() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Plugin getNavigationPlugin() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Plugin getTemperaturePlugin() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTemperatureRestUrl(Date arg0, Date arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTemperatureUrl(Date arg0, Date arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Plugin getToLowerPlugin() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getToLowerUrl() {
 		// TODO Auto-generated method stub
 		return null;
 	}

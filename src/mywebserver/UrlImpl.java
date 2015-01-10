@@ -1,5 +1,6 @@
 package mywebserver;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import BIF.SWE1.interfaces.Url;
@@ -15,14 +16,32 @@ public class UrlImpl implements Url {
 
     public UrlImpl(String raw)
     {
-    	url = raw;
-    	
+    	if(raw != null)
+    		url = raw;
+    	else
+    		url="";
     }
 
 	@Override
 	public String getPath() {
-		// TODO Auto-generated method stub
-		return null;
+
+		if(url.equals(""))
+			return "";
+		
+		
+		int index;
+		
+		if(url.contains("/")){
+			index = url.indexOf("/");								//startindex des strings, 0 würde auch gehen
+			
+			if(url.contains("?"))
+				return url.substring(index, url.indexOf("?"));		// für url_should_parse_return_path_without_parameter
+			else													//
+				return url.substring(index);						//
+			
+		}
+		
+		return url;
 	}
 
 	@Override
@@ -51,8 +70,26 @@ public class UrlImpl implements Url {
 
 	@Override
 	public Map<String, String> getParameter() {
-		// TODO Auto-generated method stub
-		return null;
+		HashMap<String, String> map = new HashMap<String, String>();		//keine ahnung warum hashmap, mit normaler map gehts nicht
+		
+		String[] params;
+		
+		int index = url.indexOf("?");
+		
+		
+		String subparam = url.substring(index+1);					//subparam ist jetzt " x=1 " oder " x=1&y=2 "
+		
+		params = subparam.split("&");								//params[0] = x=1 , params[1] = y=2
+		
+		
+		for(String str : params){									//for each str in params
+			int i = str.indexOf("=");								//i = 1
+			String val = str.substring(i+1);						//val = 1 (für x) oder val = 2 (für y)
+			String param = str.substring(0,i);						//param = x  oder param = y
+			map.put(param, val);									
+		}
+		
+		return map;
 	}
 
 	@Override

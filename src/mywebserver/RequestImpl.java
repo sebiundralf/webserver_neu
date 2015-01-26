@@ -3,6 +3,7 @@ package mywebserver;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import BIF.SWE1.interfaces.Request;
@@ -53,9 +54,9 @@ public class RequestImpl implements Request {
 			requestStr = new String(ch);							//wandelt ch-array in einen string um
 			requestLines = requestStr.split("\n");					//jede zeile des requests wird in dem neuen array gespeichert
 			
-			for(int b = 0; b < requestLines.length; b++) 			//testausgabe der requestlines
+			/*for(int b = 0; b < requestLines.length; b++) 			//testausgabe der requestlines
 				 System.out.println(requestLines[b]); 				//
-			
+			*/
 		}
 	}
 	
@@ -106,8 +107,15 @@ public class RequestImpl implements Request {
 
 	@Override
 	public Map<String, String> getHeaders() {
-		// TODO Auto-generated method stub
-		return null;
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		for(int i = 1; i < requestLines.length - 1; i++){
+			int j = requestLines[i].indexOf(" ");
+			map.put(requestLines[i].substring(0, j-1),
+					requestLines[i].substring(j+1));
+		}
+		
+		return map;
 	}
 
 	@Override

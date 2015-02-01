@@ -18,7 +18,9 @@ public class RequestImpl implements Request {
 	@Override
 	public boolean isValid() {
 		
-		return false;
+
+		
+		return true;
 	}
 
 	@Override

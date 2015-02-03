@@ -72,6 +72,8 @@ public class RequestImpl implements Request {
 			return false;
 		
 
+
+
 	String str[];
 	
 	str = requestLines[0].split(" ");

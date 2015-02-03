@@ -71,11 +71,6 @@ public class RequestImpl implements Request {
 		if(requestLines.length == 0)
 			return false;
 		
-
-
-
-
-
 	String str[];
 	
 	str = requestLines[0].split(" ");

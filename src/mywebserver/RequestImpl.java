@@ -70,7 +70,6 @@ public class RequestImpl implements Request {
 	public boolean isValid() {
 		if(requestLines.length == 0)
 			return false;
-		
 
 	String str[];
 	

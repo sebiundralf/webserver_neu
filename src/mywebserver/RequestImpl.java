@@ -16,6 +16,8 @@ public class RequestImpl implements Request {
 	String requestLines[];
 	String requestStr;
 	
+	HashMap<String,String> header;  								//in der Map werden die ganzen Header gespeichert
+	
 	ArrayList<Character> AL = new ArrayList<Character>();
 	boolean valid=true;
 	
@@ -54,12 +56,28 @@ public class RequestImpl implements Request {
 			requestStr = new String(ch);							//wandelt ch-array in einen string um
 			requestLines = requestStr.split("\n");					//jede zeile des requests wird in dem neuen array gespeichert
 			
-			/*for(int b = 0; b < requestLines.length; b++) 			//testausgabe der requestlines
+			
+			header = new HashMap<String,String>();
+			
+			for(int i = 1; i < requestLines.length-1; i++){
+				String[] content = requestLines[i].split(": ");
+				if(content.length>=2){
+					header.put(content[0].toLowerCase(),content[1]);
+				/*	 
+				 *   System.out.println("Line" + i + ": " + content[0] + " " + content[1]);   // Testausgabe Header
+					 System.out.println(header.get("user-agent"));
+					 
+					 */
+				}		
+			}
+			/*
+			for(int b = 0; b < requestLines.length; b++) 			//testausgabe der requestlines
 				 System.out.println(requestLines[b]); 				//
 			*/
 		}
 	}
 	
+
 	
 	
 	public RequestImpl(){
@@ -107,15 +125,8 @@ public class RequestImpl implements Request {
 
 	@Override
 	public Map<String, String> getHeaders() {
-		HashMap<String, String> map = new HashMap<String, String>();
-		
-		for(int i = 1; i < requestLines.length - 1; i++){
-			int j = requestLines[i].indexOf(" ");
-			map.put(requestLines[i].substring(0, j-1),
-					requestLines[i].substring(j+1));
-		}
-		
-		return map;
+
+		return header;
 	}
 
 	@Override
@@ -147,4 +158,5 @@ public class RequestImpl implements Request {
 		return stream;
 	}
 
+	
 }

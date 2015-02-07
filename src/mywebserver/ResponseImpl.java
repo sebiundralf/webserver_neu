@@ -9,7 +9,10 @@ import BIF.SWE1.interfaces.Response;
 
 public class ResponseImpl implements Response {
 
-	private int statuscode = 200;							//default statuscode
+	private int statuscode = 200; //default statuscode
+	String content;
+	String contentType;
+	
 	
 	HashMap<String, String> map = new HashMap<String, String>();
 	
@@ -23,19 +26,19 @@ public class ResponseImpl implements Response {
 	@Override
 	public int getContentLength() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.content.length();
 	}
 
 	@Override
 	public String getContentType() {
 		// TODO Auto-generated method stub
-		return null;
+		return contentType;
 	}
 
 	@Override
 	public void setContentType(String contentType) {
-		// TODO Auto-generated method stub
-		
+		this.contentType = contentType;
+		return;
 	}
 
 	@Override
@@ -83,8 +86,8 @@ public class ResponseImpl implements Response {
 
 	@Override
 	public void setContent(String content) {
-		// TODO Auto-generated method stub
-		
+		this.content = content;
+		return;
 	}
 
 	@Override
@@ -102,6 +105,8 @@ public class ResponseImpl implements Response {
 	@Override
 	public void send(OutputStream network) {
 		// TODO Auto-generated method stub
+		
+		
 		
 	}
 

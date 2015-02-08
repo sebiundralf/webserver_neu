@@ -1,10 +1,18 @@
 package mywebserver;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+
 import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
+
+import java.io.BufferedWriter;
 
 import BIF.SWE1.interfaces.Response;
 
@@ -73,19 +81,19 @@ public class ResponseImpl implements Response {
 		switch (statuscode){
 		
 		case 200: 
-			status_string = "200 ok";
+			status_string = "200 OK";
 			break;
 		case 404:
-			status_string = "404 not found";
+			status_string = "404 Not Found";
 			break;
 		case 500:
-			status_string = "500 internal server error";
+			status_string = "500 INTERNAL SERVER ERROR";
 			break;
 	
 		}
 		
 		
-		return status_string.toUpperCase();
+		return status_string;
 	}
 
 	@Override
@@ -116,8 +124,57 @@ public class ResponseImpl implements Response {
 	public void send(OutputStream network) {
 		// TODO Auto-generated method stub
 		
+		StringBuilder responsetext = new StringBuilder();
+		
+		responsetext.append("HTTP/1.1 ");				//Erste Zeile vom Header
+		responsetext.append(getStatus());
+		responsetext.append("\n");
+		
+		if(!(map == null)){
+			
+	
+			for (Iterator<Entry<String, String>> iterator = map.entrySet()
+					.iterator(); iterator.hasNext();)    //Kein Plan was das ganze Zeug in der Forschleife zu bedeuten hat
+														//Hat Eclipse selbst abgeändert
+														//Jedenfalls soll damit jeder Eintrag aus der Hashmap ausgelesen werden
+			
+			{
+				Entry<String, String> entry = iterator.next();    //<-- same
+				
+				
+				Object key = entry.getKey();
+				Object value = entry.getValue();
+				
+			 /* Hier werden Key und Value als neue Zeile hinzugefügt */
+				responsetext.append(key);
+				responsetext.append(": ");
+				responsetext.append(value);
+				responsetext.append("\n");
+			}
+			
+		}
+		
+		responsetext.append("\n");
+		responsetext.append(this.content);  //Hier noch der Content, brauchts späger denk ich
 		
 		
+		String response = responsetext.toString();
+		
+		//System.out.println(response);
+		
+
+		
+		
+		try{
+			Writer out = new BufferedWriter(new OutputStreamWriter(network,"UTF-8"));
+		
+		out.append(response);
+		out.close();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+		return;
+	
 	}
 
 }

@@ -70,10 +70,10 @@ public class RequestImpl implements Request {
 					 
 				}		
 			}
-			
+			/*
 			for(int b = 0; b < requestLines.length; b++) 			//testausgabe der requestlines
 				 System.out.println(requestLines[b]); 				//
-			
+			*/
 		}
 	}
 	

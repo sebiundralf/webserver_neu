@@ -2,6 +2,7 @@ package mywebserver;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +27,16 @@ public class ResponseImpl implements Response {
 	@Override
 	public int getContentLength() {
 		// TODO Auto-generated method stub
-		return this.content.length();
+		
+		int i = 0;
+		
+		try {
+			i = this.content.getBytes("UTF-8").length;
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return i;
 	}
 
 	@Override

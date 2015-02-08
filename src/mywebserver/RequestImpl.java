@@ -64,16 +64,16 @@ public class RequestImpl implements Request {
 				if(content.length>=2){
 					header.put(content[0].toLowerCase(),content[1]);
 				/*	 
-				 *   System.out.println("Line" + i + ": " + content[0] + " " + content[1]);   // Testausgabe Header
+				   System.out.println("Line" + i + ": " + content[0] + " " + content[1]);   // Testausgabe Header
 					 System.out.println(header.get("user-agent"));
+					*/ 
 					 
-					 */
 				}		
 			}
-			/*
+			
 			for(int b = 0; b < requestLines.length; b++) 			//testausgabe der requestlines
 				 System.out.println(requestLines[b]); 				//
-			*/
+			
 		}
 	}
 	

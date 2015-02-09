@@ -70,8 +70,8 @@ public class RequestImpl implements Request {
 					 
 				}		
 			}
-			/*
-			for(int b = 0; b < requestLines.length; b++) 			//testausgabe der requestlines
+		
+			/*for(int b = 0; b < requestLines.length; b++) 			//testausgabe der requestlines
 				 System.out.println(requestLines[b]); 				//
 			*/
 		}
@@ -141,7 +141,7 @@ public class RequestImpl implements Request {
 	}
 
 	@Override
-	public String getContentType() {							//siehe content getContentLength()
+	public String getContentType() {							//siehe getContentLength()
 
 		for(String str : requestLines){
 			if(str.startsWith("Content-Type"))

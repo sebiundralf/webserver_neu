@@ -20,14 +20,13 @@ public class TestPluginImpl implements Plugin{
 		else if(req.getUrl().getRawUrl().equals("/"))
 			return 0.8f;
 		else 
-			return 0.0f;
-		
-		
+			return 0.0f;	
 	
 	}
 
 	@Override
 	public Response handle(Request req) {
+		
 		ResponseImpl resp = new ResponseImpl();
 		StringBuilder content = new StringBuilder();
 		CharSequence c;

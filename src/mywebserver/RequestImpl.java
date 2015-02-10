@@ -16,10 +16,19 @@ public class RequestImpl implements Request {
 	String requestLines[];
 	String requestStr;
 	
+	String body;
+	String bodyLines[];
+	
+	
 	HashMap<String,String> header;  								//in der Map werden die ganzen Header gespeichert
 	
 	ArrayList<Character> AL = new ArrayList<Character>();
 	boolean valid=true;
+	
+	public RequestImpl(){
+		this(null);
+	}
+	
 	
 	public RequestImpl(InputStream arg0){
 		stream = arg0;
@@ -30,13 +39,13 @@ public class RequestImpl implements Request {
 			
 			boolean empty = true;
 			int c;
+			int j = 0;
 			
 			try {
 				while((c=stream.read()) != -1){						//solange der stream nicht leer ist
 																	
 					empty = false;
 					AL.add((char) c);								//werden die gelesenen chars der arraylist hinzugefügt
-					
 				}
 					
 			} catch (IOException e) {
@@ -46,6 +55,7 @@ public class RequestImpl implements Request {
 			
 			if(empty)
 				valid = false;
+			
 			
 			char ch[] = new char[AL.size()];
 			
@@ -71,18 +81,17 @@ public class RequestImpl implements Request {
 				}		
 			}
 		
-			/*for(int b = 0; b < requestLines.length; b++) 			//testausgabe der requestlines
+		/*	for(int b = 0; b < requestLines.length; b++) 			//testausgabe der requestlines
 				 System.out.println(requestLines[b]); 				//
+			
 			*/
+			
 		}
 	}
 	
 
 	
 	
-	public RequestImpl(){
-		this(null);
-	}
 	
 	@Override
 	public boolean isValid() {
@@ -93,7 +102,7 @@ public class RequestImpl implements Request {
 	
 	str = requestLines[0].split(" ");
 	
-	if(str.length!=3)												//ungültig wenn header nicht 3 strings enthält
+	if(str.length!=3)												//ungültig wenn erste zeile des headers nicht 3 strings enthält
 		return false;
 	
 	if(!this.getMethod().equals("GET") && !this.getMethod().equals("POST"))
@@ -138,6 +147,7 @@ public class RequestImpl implements Request {
 		}
 		
 		return 0;
+		//return length;
 	}
 
 	@Override

@@ -33,7 +33,7 @@ public class RequestImpl implements Request {
 
 			boolean empty = true;
 			int c;
-		//	 System.out.println("2");
+			// System.out.println("2");
 
 			int j = 0;
 			try {
@@ -42,10 +42,10 @@ public class RequestImpl implements Request {
 
 					if (c == '\n' || c == '\r') { // sonst geht er nie aus der
 													// schleife
-						j++; 						// wir brauchen eig auch nur die erste Zeile
-						
-
+						j++; 					// wir brauchen eig auch nur die erste Zeile
+			
 					} else {
+			
 						j = 0;
 					}
 
@@ -54,10 +54,11 @@ public class RequestImpl implements Request {
 						AL.add((char) c); // werden die gelesenen chars der
 											// arraylist hinzugefügt
 
-				//	System.out.print((char) (c));
+					 System.out.print((char) (c));
 
-					if (j == 4)
+					if (j == 3)
 						break; // sonst geht er nie aus der schleife
+				
 				}
 
 			} catch (IOException e) {
@@ -87,19 +88,41 @@ public class RequestImpl implements Request {
 				String[] content = requestLines[i].split(": ");
 				if (content.length >= 2) {
 					header.put(content[0].toLowerCase(), content[1]);
-					/*
-					 * System.out.println("Line" + i + ": " + content[0] + " " +
-					 * content[1]); // Testausgabe Header
-					 * System.out.println(header.get("user-agent"));
-					 */
 
+				/*	System.out.println("Line" + i + ": " + content[0] + " "
+							+ content[1]); // Testausgabe Header
+					// System.out.println(header.get("user-agent"));
+*/
 				}
 			}
 			/*
 			 * for(int b = 0; b < requestLines.length; b++) //testausgabe der
 			 * requestlines System.out.println(requestLines[b]); //
 			 */
+			/*
+			if (getMethod().equals("POST")) {
+				ArrayList<Character> NAL = new ArrayList<Character>();
+			//	System.out.print("CONTENT: ");
+				try {
+					while ((c = stream.read()) != -1) { 
+						//System.out.print("+");
 
+						if (j < 3)
+							NAL.add((char) c); 
+
+						 System.out.print((char) (c));
+
+						if (j == 4)
+							break; // sonst geht er nie aus der schleife
+					}
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+				}
+				
+			//	System.out.println("ENDE");
+			}*/
 		}
 	}
 

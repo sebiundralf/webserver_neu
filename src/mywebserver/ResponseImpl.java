@@ -110,7 +110,11 @@ public class ResponseImpl implements Response {
 
 	@Override
 	public void setContent(byte[] content) {
-		// TODO Auto-generated method stub
+		if (content == null) {
+			System.out.println("Could not retrieve Request (byte)");
+			return;
+		}
+		this.content = new String(content);
 		
 	}
 

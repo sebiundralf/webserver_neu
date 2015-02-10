@@ -2,8 +2,6 @@ package mywebserver;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,28 +33,30 @@ public class RequestImpl implements Request {
 
 			boolean empty = true;
 			int c;
-			// System.out.println("2");
+		//	 System.out.println("2");
 
 			int j = 0;
 			try {
 				while ((c = stream.read()) != -1) { // solange der stream nicht
 													// leer ist
 
-					if (c == '\r' || c == '\n') { // sonst geht er nie aus der
+					if (c == '\n' || c == '\r') { // sonst geht er nie aus der
 													// schleife
 						j++; 						// wir brauchen eig auch nur die erste Zeile
+						
+
 					} else {
 						j = 0;
 					}
 
 					empty = false;
-					if (j < 2)
+					if (j < 3)
 						AL.add((char) c); // werden die gelesenen chars der
 											// arraylist hinzugefügt
 
 				//	System.out.print((char) (c));
 
-					if (j == 2)
+					if (j == 4)
 						break; // sonst geht er nie aus der schleife
 				}
 

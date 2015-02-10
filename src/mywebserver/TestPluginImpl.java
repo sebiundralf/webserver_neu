@@ -36,6 +36,27 @@ public class TestPluginImpl implements Plugin{
 		String file = null;
 		String path = req.getUrl().getPath();
 		String dir = System.getProperty("user.dir"); // + "/..";
+		
+		String dirFolder[];
+		
+		dirFolder = dir.split("\\\\");
+		
+	//	System.out.println(dir);
+	//	System.out.println(dirFolder[dirFolder.length-1]);
+		
+		if(dirFolder[dirFolder.length-1].equals("deploy")){
+			
+			StringBuilder newPath = new StringBuilder();
+			newPath.append(dirFolder[0]);
+			
+			for(int i = 1; i < dirFolder.length-1; i++)
+				newPath.append("\\" + dirFolder[i] );
+			
+			dir = newPath.toString();
+			
+		}
+		//System.out.println(dir);
+		
 	
 		if(path.equals("/test/foo.html")){
 			

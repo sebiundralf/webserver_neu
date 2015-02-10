@@ -54,7 +54,7 @@ public class RequestImpl implements Request {
 						AL.add((char) c); // werden die gelesenen chars der
 											// arraylist hinzugefügt
 
-					 System.out.print((char) (c));
+					// System.out.print((char) (c));
 
 					if (j == 3)
 						break; // sonst geht er nie aus der schleife

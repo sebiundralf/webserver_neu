@@ -1,5 +1,6 @@
 package mywebserver;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import BIF.SWE1.interfaces.Plugin;
@@ -12,6 +13,12 @@ public class PluginManagerImpl implements PluginManager{
 	@Override
 	public Iterable<Plugin> getPlugins() {
 		// TODO Auto-generated method stub
+		
+		list = new ArrayList<Plugin>();
+		
+		
+		list.add(new TestPluginImpl());
+		
 		return list;
 	}
 

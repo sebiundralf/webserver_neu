@@ -17,6 +17,12 @@ public class PluginManagerImpl implements PluginManager{
 	@Override
 	public Iterable<Plugin> getPlugins() {
 		// TODO Auto-generated method stub
+		
+		list = new ArrayList<Plugin>();
+		
+		
+		list.add(new TestPluginImpl());
+		
 		return list;
 	}
 

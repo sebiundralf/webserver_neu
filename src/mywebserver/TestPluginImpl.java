@@ -40,16 +40,16 @@ public class TestPluginImpl implements Plugin{
 		if(path.equals("/test/foo.html")){
 			
 			file = dir + "\\test\\foo.html";
-			System.out.println("file: " + file);
+			//System.out.println("file: " + file);
 			
 		}else if (path.equals("/")) {
 			file = dir + "\\test\\index.html";
-			System.out.println("file: " + file);
+			//System.out.println("file: " + file);
 		}
 			
 		
-		System.out.println("user.dir: " + dir);
-		System.out.println("path: " + path);
+/*		System.out.println("user.dir: " + dir);
+		System.out.println("path: " + path);*/
 		
 		
 		try {

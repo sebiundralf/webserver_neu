@@ -17,7 +17,7 @@ public class TestPluginImpl implements Plugin{
 		
 		if(req.getUrl().getRawUrl().equals("/test/foo.html"))
 			return 0.9f;
-		else if(req.getUrl().getRawUrl().equals("/"))
+		else if(req.getUrl().getRawUrl().equals("/") || req.getUrl().getRawUrl().equals("/index.html") )
 			return 0.8f;
 		else 
 			return 0.0f;	
@@ -35,21 +35,21 @@ public class TestPluginImpl implements Plugin{
 		
 		String file = null;
 		String path = req.getUrl().getPath();
-		String dir = System.getProperty("user.dir") + "/..";
-		
+		String dir = System.getProperty("user.dir"); // + "/..";
+	
 		if(path.equals("/test/foo.html")){
 			
 			file = dir + "\\test\\foo.html";
 			//System.out.println("file: " + file);
 			
-		}else if (path.equals("/")) {
+		}else if (path.equals("/") || path.equals("/index.html")) {
 			file = dir + "\\test\\index.html";
 			//System.out.println("file: " + file);
 		}
 			
 		
-/*		System.out.println("user.dir: " + dir);
-		System.out.println("path: " + path);*/
+	//	System.out.println("user.dir: " + dir);
+		System.out.println("path: " + path);
 		
 		
 		try {
@@ -61,6 +61,7 @@ public class TestPluginImpl implements Plugin{
 			readFile.close();
 			resp.setContent(content.toString());
 			resp.setStatusCode(200);
+
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

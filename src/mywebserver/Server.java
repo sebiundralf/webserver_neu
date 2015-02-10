@@ -19,7 +19,7 @@ public class Server {
 		// TODO Auto-generated method stub
 
 		ServerSocket listener;
-
+	//	Connection.connections = 0;
 		try {
 			listener = new ServerSocket(port);    
 

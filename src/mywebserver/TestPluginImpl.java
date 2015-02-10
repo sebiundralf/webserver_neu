@@ -49,7 +49,7 @@ public class TestPluginImpl implements Plugin{
 			
 		
 	//	System.out.println("user.dir: " + dir);
-		System.out.println("path: " + path);
+	//	System.out.println("path: " + path);
 		
 		
 		try {

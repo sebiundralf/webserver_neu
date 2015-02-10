@@ -1,66 +1,59 @@
 package mywebserver;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 public class Server {
+
+	int port;
+	boolean closeServer = false;
+
+	public Server(int port) {
+
+		this.port = port;
+
+	}
+
 	public void run() {
 		// TODO Auto-generated method stub
-		
-		
-	System.out.println("Waiting for connections..");
-		
+
 		ServerSocket listener;
-		
+
 		try {
-			listener = new ServerSocket(1338);
-			
+			listener = new ServerSocket(port);    
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("Nix gangen");
 			return;
 		}
-	
 
-	
-		Socket s;
-		try {
-			s = listener.accept();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			return;
-		}
-		
-		BufferedReader in;
-	
+		System.out.println("Waiting for connections..");
+
+		while (!closeServer) {
+			
+			Socket cSocket;
 			try {
-				in = new BufferedReader( 
-						new InputStreamReader(s.getInputStream()));
+				cSocket = listener.accept();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 				return;
 			}
-
-		String line;
-		try {
-			while((line = in.readLine()) != null) {
-					System.out.println(line);
 			
-			}
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		
+			
+			new Thread(new Connection(cSocket));
 
+		}
 		
 		try {
 			listener.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
 
 	}
 }

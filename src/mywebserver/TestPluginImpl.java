@@ -44,6 +44,7 @@ public class TestPluginImpl implements Plugin{
 	//	System.out.println(dir);
 	//	System.out.println(dirFolder[dirFolder.length-1]);
 		
+		/* Bei den Unitests sucht er immer im deploy ordner statt im root ordner, deshalb wird dieser entfernt */
 		if(dirFolder[dirFolder.length-1].equals("deploy")){
 			
 			StringBuilder newPath = new StringBuilder();
@@ -57,7 +58,6 @@ public class TestPluginImpl implements Plugin{
 		}
 		//System.out.println(dir);
 		
-	
 		if(path.equals("/test/foo.html")){
 			
 			file = dir + "\\test\\foo.html";
@@ -67,11 +67,9 @@ public class TestPluginImpl implements Plugin{
 			file = dir + "\\test\\index.html";
 			//System.out.println("file: " + file);
 		}
-			
-		
+				
 	//	System.out.println("user.dir: " + dir);
 	//	System.out.println("path: " + path);
-		
 		
 		try {
 			readFile = new FileInputStream(file);
@@ -82,7 +80,6 @@ public class TestPluginImpl implements Plugin{
 			readFile.close();
 			resp.setContent(content.toString());
 			resp.setStatusCode(200);
-
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -92,10 +89,7 @@ public class TestPluginImpl implements Plugin{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		
+
 		return resp;
 	}
 

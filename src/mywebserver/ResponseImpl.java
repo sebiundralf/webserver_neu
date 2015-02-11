@@ -28,7 +28,6 @@ public class ResponseImpl implements Response {
 	
 	@Override
 	public Map<String, String> getHeaders() {
-		
 		return map;											//return map, created in addHeader()
 	}
 
@@ -61,14 +60,11 @@ public class ResponseImpl implements Response {
 
 	@Override
 	public int getStatusCode() {								//getter
-				
-		
-		return statuscode;	
+			return statuscode;	
 	}
 
 	@Override
-	public void setStatusCode(int status) {						//setter
-		
+	public void setStatusCode(int status) {						//setter		
 		statuscode = status;
 				
 	}
@@ -92,14 +88,12 @@ public class ResponseImpl implements Response {
 	
 		}
 		
-		
 		return status_string;
 	}
 
 	@Override
 	public void addHeader(String header, String value) {
-		map.put(header, value);
-		
+		map.put(header, value);		
 	}
 
 	@Override
@@ -120,8 +114,7 @@ public class ResponseImpl implements Response {
 
 	@Override
 	public void setContent(InputStream stream) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
@@ -136,7 +129,6 @@ public class ResponseImpl implements Response {
 		
 		if(!(map == null)){
 			
-	
 			for (Iterator<Entry<String, String>> iterator = map.entrySet()
 					.iterator(); iterator.hasNext();)    //Kein Plan was das ganze Zeug in der Forschleife zu bedeuten hat
 														//Hat Eclipse selbst abgeändert

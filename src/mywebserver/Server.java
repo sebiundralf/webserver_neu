@@ -19,10 +19,9 @@ public class Server {
 		// TODO Auto-generated method stub
 
 		ServerSocket listener;
-	//	Connection.connections = 0;
+
 		try {
 			listener = new ServerSocket(port);    
-
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,11 +40,8 @@ public class Server {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 				return;
-			}
-			
-			
+			}			
 			new Thread(new Connection(cSocket));
-
 		}
 		
 		try {

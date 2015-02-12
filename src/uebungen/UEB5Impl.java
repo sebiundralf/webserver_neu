@@ -4,12 +4,15 @@ import java.io.InputStream;
 
 import mywebserver.PluginManagerImpl;
 import mywebserver.RequestImpl;
+import mywebserver.StaticFilePlugin;
 import BIF.SWE1.interfaces.Plugin;
 import BIF.SWE1.interfaces.PluginManager;
 import BIF.SWE1.interfaces.Request;
 import BIF.SWE1.interfaces.UEB5;
 
 public class UEB5Impl implements UEB5 {
+
+	public static String fileurl = "";
 
 	@Override
 	public void helloWorld() {
@@ -30,18 +33,19 @@ public class UEB5Impl implements UEB5 {
 	@Override
 	public Plugin getStaticFilePlugin() {
 		// TODO Auto-generated method stub
-		return null;
+		return new StaticFilePlugin();
 	}
 
 	@Override
 	public String getStaticFileUrl(String arg0) {
-		// TODO Auto-generated method stub
-		return null;
+				
+		fileurl =  "/" + arg0;	
+		return fileurl;
 	}
 
 	@Override
 	public void setStatiFileFolder(String arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }

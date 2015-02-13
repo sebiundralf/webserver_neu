@@ -23,7 +23,7 @@ public class StaticFilePlugin implements Plugin {
 		// System.out.println("vURL: "+ vUrl.getPath());
 
 		if (new File(vUrl.getPath()).exists() == true) // siehe UEB5Impl
-			return 0.7f;
+			return 0.1f;
 
 		return 0;
 	}

@@ -13,6 +13,7 @@ import BIF.SWE1.interfaces.UEB5;
 public class UEB5Impl implements UEB5 {
 
 	public static String fileurl = "";
+	public static String folder = "";
 
 	@Override
 	public void helloWorld() {
@@ -38,13 +39,18 @@ public class UEB5Impl implements UEB5 {
 
 	@Override
 	public String getStaticFileUrl(String arg0) {
-				
-		fileurl =  "/" + arg0;	
+		
+		
+		fileurl =  folder + "\\" + arg0;	
 		return fileurl;
 	}
 
 	@Override
 	public void setStatiFileFolder(String arg0) {
+		
+		
+		folder = System.getProperty("user.dir") + "\\" + arg0;
+		//System.out.println(folder);
 		
 		
 	}

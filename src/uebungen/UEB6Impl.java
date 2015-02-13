@@ -3,6 +3,9 @@ package uebungen;
 import java.io.InputStream;
 import java.util.Date;
 
+import mywebserver.PluginManagerImpl;
+import mywebserver.RequestImpl;
+import mywebserver.ToLowerPlugin;
 import BIF.SWE1.interfaces.Plugin;
 import BIF.SWE1.interfaces.PluginManager;
 import BIF.SWE1.interfaces.Request;
@@ -17,13 +20,13 @@ public class UEB6Impl implements UEB6 {
 	@Override
 	public PluginManager getPluginManager() {
 		// TODO Auto-generated method stub
-		return null;
+		return new PluginManagerImpl();
 	}
 
 	@Override
 	public Request getRequest(InputStream arg0) {
 		// TODO Auto-generated method stub
-		return null;
+		return new RequestImpl(arg0);
 	}
 
 	@Override
@@ -59,12 +62,13 @@ public class UEB6Impl implements UEB6 {
 	@Override
 	public Plugin getToLowerPlugin() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ToLowerPlugin();
 	}
 
 	@Override
 	public String getToLowerUrl() {
 		// TODO Auto-generated method stub
-		return null;
+		return "/toLower.html";
+		//return null;
 	}
 }

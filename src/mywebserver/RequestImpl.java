@@ -81,16 +81,25 @@ public class RequestImpl implements Request {
 													// gespeichert
 			header = new HashMap<String, String>();
 
+			//System.out.println(requestLines[0]);
+			String head;
+			String value;
+			
 			for (int i = 1; i < requestLines.length - 1; i++) {
 				String[] content = requestLines[i].split(": ");
 				if (content.length >= 2) {
-					header.put(content[0].toLowerCase(), content[1]);
+					
+					head = content[0].toLowerCase().replaceAll("[\n\r]", "");
+					value = content[1].replaceAll("[\n\r]", "");
+					
+					
+					header.put(head.trim(), value.trim());
 
-					/*
-					 * System.out.println("Line" + i + ": " + content[0] + " " +
-					 * content[1]); // Testausgabe Header //
-					 * System.out.println(header.get("user-agent"));
-					 */
+					
+				/*	 System.out.println("Line" + i + ": " + head.trim() + " " +
+						value.trim()); // Testausgabe Header //
+					 //System.out.println(header.get("user-agent"));
+				*/	 
 				}
 			}
 			/*
@@ -164,14 +173,21 @@ public class RequestImpl implements Request {
 	@Override
 	public int getContentLength() { // searches for line with content-len and
 									// reads len
-
+/*
 		for (String str : requestLines) { // each line consists of pairs -->
 			if (str.startsWith("Content-Length"))
 				return Integer.valueOf((str.split(" ")[1])); // split string and
 																// take value
 																// (=second
 																// string)
+		}*/
+		String s = null;
+		if((!(s = header.get("content-length")).equals(""))){
+			return Integer.valueOf(s);
+		
+		
 		}
+		//return 0;
 
 		return 0;
 	}

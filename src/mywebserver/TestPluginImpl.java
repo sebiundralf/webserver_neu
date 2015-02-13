@@ -15,12 +15,18 @@ public class TestPluginImpl implements Plugin{
 	@Override
 	public float canHandle(Request req) {
 		
-		if(req.getUrl().getRawUrl().equals("/test/foo.html"))
-			return 0.9f;
-		else if(req.getUrl().getRawUrl().equals("/") || req.getUrl().getRawUrl().equals("/index.html") )
-			return 0.8f;
-		else 
-			return 0.0f;	
+		String s = req.getUrl().getPath().toUpperCase();
+		
+		if(s.equals("/TEST/FOO.HTML"))
+			return 0.2f;
+		else if(s.equals("/") || 
+				s.equals("/INDEX.HTML") )
+			return 0.2f;
+		else if(s.toUpperCase().equals("/TOLOWER.HTML") || 
+				s.toUpperCase().equals("/TOLOWER") )
+			return 0.2f;
+		
+		return 0.0f;	
 	
 	}
 
@@ -32,7 +38,7 @@ public class TestPluginImpl implements Plugin{
 		CharSequence c;
 		FileInputStream readFile = null;
 		BufferedReader readBuf;
-		
+	
 		String file = null;
 		String path = req.getUrl().getPath();
 		String dir = System.getProperty("user.dir"); // + "/..";
@@ -58,13 +64,19 @@ public class TestPluginImpl implements Plugin{
 		}
 		//System.out.println(dir);
 		
+
+		
 		if(path.equals("/test/foo.html")){
 			
 			file = dir + "\\test\\foo.html";
 			//System.out.println("file: " + file);
 			
-		}else if (path.equals("/") || path.equals("/index.html")) {
+		}else if(path.equals("/") ) {
 			file = dir + "\\test\\index.html";
+		}
+		
+		else{
+			file = dir + "\\test" + path.replace("/", "\\");
 			//System.out.println("file: " + file);
 		}
 				

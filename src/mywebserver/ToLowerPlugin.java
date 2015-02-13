@@ -32,7 +32,6 @@ public class ToLowerPlugin implements Plugin {
 		/* Content Auslesen */
 		
 			int c;
-			int j = 0;
 
 			StringBuilder sb = new StringBuilder();
 

@@ -31,6 +31,20 @@ public class PluginManagerImpl implements PluginManager{
 	}
 	
 	public Plugin selectPlugin(Request req) {
+		
+		if(req.getUrl().getPath().toLowerCase().equals("/debug=on")){
+			RequestImpl.debug = true;
+			
+			return null;
+		}
+			
+		if(req.getUrl().getPath().toLowerCase().equals("/debug=off")){
+			RequestImpl.debug = false;
+		
+			return null;
+		}
+			
+			
 		Plugin plugin = null;
 		float max = 0;
 		for (Plugin p : getPlugins()) {

@@ -55,8 +55,8 @@ public class Connection implements Runnable {
 			  resp = new ResponseImpl();
 			  resp.setStatusCode(404);
 			  resp.setContent("<html><head><title>Site not foud</title></head>"
-			  		+ "<body><br /><h1>Error</h><p> Server can not find the requested page \"" 
-					  + req.getUrl().getPath() + "\"! <br /> </p> </body> </html>");
+			  		+ "<body><br /><h1>Error 404</h1><p> Server can not find the requested page \"" 
+					  + req.getUrl().getPath() + "\"! <br /> </p> <a href=\"/index.html\"> go back to main page </a> </body> </html>");
 			  try {
 				resp.send(socket.getOutputStream());
 			} catch (IOException e) {

@@ -2,6 +2,8 @@ package mywebserver;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +17,7 @@ public class RequestImpl implements Request {
 	int length;
 	String requestLines[];
 	String requestStr;
+	public static boolean debug = false; 
 
 	HashMap<String, String> header; // in der Map werden die ganzen Header
 									// gespeichert
@@ -50,8 +53,8 @@ public class RequestImpl implements Request {
 					if (j < 3)
 						AL.add((char) c); // werden die gelesenen chars der
 											// arraylist hinzugefügt
-
-					// System.out.print((char) (c));  // (Gibt das einglesene Zeichen aus zum testen)
+					if(debug)
+					 System.out.print((char) (c));  // (Gibt das einglesene Zeichen aus zum testen)
 
 					if (j == 3)
 						break; // sonst geht er nie aus der schleife, bzw.
@@ -80,12 +83,14 @@ public class RequestImpl implements Request {
 													// wird in dem neuen array
 													// gespeichert
 			header = new HashMap<String, String>();
-
-			//System.out.println(requestLines[0]);
+			
+			/*if(debug)
+			 System.out.println(requestLines[0]);*/
+			
 			String head;
 			String value;
 			
-			for (int i = 1; i < requestLines.length - 1; i++) {
+			for (int i = 1; i < requestLines.length; i++) {
 				String[] content = requestLines[i].split(": ");
 				if (content.length >= 2) {
 					
@@ -95,27 +100,14 @@ public class RequestImpl implements Request {
 					
 					header.put(head.trim(), value.trim());
 
-					
-				/*	 System.out.println("Line" + i + ": " + head.trim() + " " +
+					/*if(debug)
+					 System.out.println("Line" + i + ": " + head.trim() + ": " +
 						value.trim()); // Testausgabe Header //
-					 //System.out.println(header.get("user-agent"));
-				*/	 
+					 //System.out.println(header.get("user-agent"));*/
+				 
 				}
 			}
-			/*
-			 * for(int b = 0; b < requestLines.length; b++) //testausgabe der
-			 * requestlines System.out.println(requestLines[b]); //
-			 */
-			/*
-			 * if (getMethod().equals("POST")) { ArrayList<Character> NAL = new
-			 * ArrayList<Character>(); // System.out.print("CONTENT: "); try {
-			 * while ((c = stream.read()) != -1) { //System.out.print("+"); if
-			 * (j < 3) NAL.add((char) c); System.out.print((char) (c)); if (j ==
-			 * 4) break; // sonst geht er nie aus der schleife } } catch
-			 * (IOException e) { e.printStackTrace(); }
-			 * 
-			 * // System.out.println("ENDE"); }
-			 */
+	
 		}
 	}
 
@@ -209,5 +201,60 @@ public class RequestImpl implements Request {
 
 		return stream;
 	}
+	
+	
+	/* Liest den Input-Stream des Übergebenen Request aus. Header schon ausgelesen, der Rest ist content;
+	 * Wandelt den Content um und Liefert den fertigen String zurück
+	 */
+	
+	public static String readPostContent(Request req){
+		
+		if(!req.getMethod().equals("POST"))
+			return null;
+		
+		StringBuilder sb = new StringBuilder();
+		int c;
+		
+		if(debug)
+			System.out.println("Post content: ");
+		
+		try {
+			for (int i = 0; i <= req.getContentLength(); i++) {
+
+					c = req.getContentStream().read();
+					sb.append((char) c);
+					 
+					if(debug)
+					System.out.print((char) (c)); // (Gibt das einglesene
+					// Zeichen aus
+					// zum testen)
+
+				}
+				
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(debug)
+			System.out.println("");
+		
+		String newContent = sb.toString();
+		String [] ss;
+		ss = newContent.split("=");
+		if(ss.length>=2)
+			newContent = ss[1];
+		
+
+		try {
+			newContent = URLDecoder.decode(newContent, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return newContent;
+	}
+	
 
 }

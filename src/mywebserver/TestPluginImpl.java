@@ -25,6 +25,8 @@ public class TestPluginImpl implements Plugin{
 		else if(s.toUpperCase().equals("/TOLOWER.HTML") || 
 				s.toUpperCase().equals("/TOLOWER") )
 			return 0.2f;
+		else if(s.toUpperCase().equals("/STATIC.HTML"))
+			return 0.2f;
 		
 		return 0.0f;	
 	
@@ -47,8 +49,8 @@ public class TestPluginImpl implements Plugin{
 		
 		dirFolder = dir.split("\\\\");
 		
-	System.out.println(dir);
-		System.out.println(dirFolder[dirFolder.length-1]);
+	//System.out.println(dir);
+	//	System.out.println(dirFolder[dirFolder.length-1]);
 		
 		/* Bei den Unitests sucht er immer im deploy ordner statt im root ordner, deshalb wird dieser entfernt */
 		if(dirFolder[dirFolder.length-1].equals("deploy")){
@@ -77,11 +79,11 @@ public class TestPluginImpl implements Plugin{
 		
 		else{
 			file = dir + "\\test" + path.replace("/", "\\");
-			System.out.println("file: " + file);
+			//System.out.println("file: " + file);
 		}
 				
-		System.out.println("user.dir: " + dir);
-		System.out.println("path: " + path);
+	//	System.out.println("user.dir: " + dir);
+	//	System.out.println("path: " + path);
 		
 		try {
 			readFile = new FileInputStream(file);

@@ -5,8 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
+
 
 
 import BIF.SWE1.interfaces.Plugin;
@@ -31,28 +30,7 @@ public class ToLowerPlugin implements Plugin {
 
 		/* Content Auslesen */
 		
-			int c;
-
-			StringBuilder sb = new StringBuilder();
-
-			try {
-				for (int i = 0; i <= req.getContentLength(); i++) {
-
-					
-					
-
-						c = req.getContentStream().read();
-						sb.append((char) c);
-						 //System.out.print((char) (c)); // (Gibt das einglesene
-						// Zeichen aus
-						// zum testen)
-
-					}
-					
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		String newContent = RequestImpl.readPostContent(req);
 		
 
 		ResponseImpl resp = new ResponseImpl();
@@ -108,19 +86,8 @@ public class ToLowerPlugin implements Plugin {
 			e.printStackTrace();
 		}
 
-		String newContent = sb.toString();
-		String [] ss;
-		ss = newContent.split("=");
-		if(ss.length>=2)
-			newContent = ss[1];
-		
 
-		try {
-			newContent = URLDecoder.decode(newContent, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		// System.out.println("\nNew Content: " + newContent);
 
 

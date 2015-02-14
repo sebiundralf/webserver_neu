@@ -27,6 +27,8 @@ public class TestPluginImpl implements Plugin{
 			return 0.2f;
 		else if(s.toUpperCase().equals("/STATIC.HTML"))
 			return 0.2f;
+		else if(s.equals("/STYLE.CSS"))
+			return 0.2f;
 		
 		return 0.0f;	
 	

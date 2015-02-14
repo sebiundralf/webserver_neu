@@ -28,6 +28,9 @@ public class StaticFilePlugin implements Plugin {
 		if(vUrl.getPath().equals("/load_static"))
 			return 0.1f;
 
+		
+	
+		
 		return 0;
 	}
 

@@ -2,17 +2,20 @@
 
 <head>
 	<title> Static File Plugin </title>
+		<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-
+<div class="content">
 <form action="load_static" method="POST">
 <!-- hier folgen die Formularelemente -->
 
-  <p>Input Filename incl. directory (max 255 char): <input name="filename" type="text" maxlength="255"value="C:\example.txt" size="255" /> </p>
+  <p>Input Filename incl. directory (max 255 char): <br />
+  <input name="filename" type="text" maxlength="255"value="C:\example.txt" size="100" /> </p>
   <input type="submit" value=" Absenden ">
 </form>
-
+<a href="/index.html"> back </a>
+</div>
 </body>
 
 </html>

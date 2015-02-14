@@ -1,0 +1,51 @@
+* {
+	margin:5px;
+
+}
+body {
+    background-color: #d0e4fe;
+	font-family:"Arial";
+}
+
+div{
+	margin:20px;
+	padding:50px;
+
+}
+.content{
+
+	background-color: #D4fFC0;
+	height:100%;
+	width:700px;
+	margin:auto;
+
+}
+
+
+/* unvisited link */
+
+a{
+	font-weight:bold;
+}
+a:link {
+    color: #7722CC;
+	text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+     color: #7722CC;
+	text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+     color: #AA4422;
+	text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: #0000FF;
+	text-decoration: none;
+}

@@ -7,7 +7,7 @@ import java.net.Socket;
 public class Server {
 
 	int port;
-	boolean closeServer = false;
+	static boolean closeServer = false;
 
 	public Server(int port) {
 
@@ -50,6 +50,8 @@ public class Server {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		System.out.println("Server closed.");
 
 	}
 }

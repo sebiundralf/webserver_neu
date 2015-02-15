@@ -43,6 +43,12 @@ public class PluginManagerImpl implements PluginManager{
 		
 			return null;
 		}
+		
+		if(req.getUrl().getPath().toLowerCase().equals("/close")){
+			Server.closeServer = true;
+		
+			return null;
+		}
 			
 			
 		Plugin plugin = null;

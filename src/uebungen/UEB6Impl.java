@@ -3,8 +3,10 @@ package uebungen;
 import java.io.InputStream;
 import java.util.Date;
 
+import mywebserver.NaviPlugin;
 import mywebserver.PluginManagerImpl;
 import mywebserver.RequestImpl;
+import mywebserver.TemperaturePlugin;
 import mywebserver.ToLowerPlugin;
 import BIF.SWE1.interfaces.Plugin;
 import BIF.SWE1.interfaces.PluginManager;
@@ -38,13 +40,13 @@ public class UEB6Impl implements UEB6 {
 	@Override
 	public Plugin getNavigationPlugin() {
 		// TODO Auto-generated method stub
-		return null;
+		return new NaviPlugin();
 	}
 
 	@Override
 	public Plugin getTemperaturePlugin() {
 		// TODO Auto-generated method stub
-		return null;
+		return new TemperaturePlugin();
 	}
 
 	@Override

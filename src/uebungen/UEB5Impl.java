@@ -42,6 +42,7 @@ public class UEB5Impl implements UEB5 {
 		
 		
 		fileurl =  folder + "\\" + arg0;	
+		//System.out.println("fileurl = " + fileurl);
 		return fileurl;
 	}
 
@@ -50,7 +51,7 @@ public class UEB5Impl implements UEB5 {
 		
 		
 		folder = System.getProperty("user.dir") + "\\" + arg0;
-		//System.out.println(folder);
+		//System.out.println("folder = " + folder);
 		
 		
 	}

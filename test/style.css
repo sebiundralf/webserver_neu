@@ -12,6 +12,8 @@ div{
 	padding:50px;
 
 }
+
+
 .content{
 
 	background-color: #D4fFC0;
@@ -22,6 +24,12 @@ div{
 
 }
 
+#navicont{
+	margin: 0px;
+	padding: 0px;
+	//background-color:  #D0f0B0;
+
+}
 
 /* unvisited link */
 

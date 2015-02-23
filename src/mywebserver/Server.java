@@ -41,7 +41,11 @@ public class Server {
 				e1.printStackTrace();
 				return;
 			}			
-			new Thread(new Connection(cSocket));
+			
+			Connection con = new Connection(cSocket);
+			con.start();
+			
+
 		}
 		
 		try {

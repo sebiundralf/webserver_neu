@@ -27,7 +27,10 @@ div{
 #navicont{
 	margin: 0px;
 	padding: 0px;
-	//background-color:  #D0f0B0;
+	background-color:  #D0f0B0;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
 
 }
 

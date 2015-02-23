@@ -244,6 +244,8 @@ public class RequestImpl implements Request {
 		ss = newContent.split("=");
 		if(ss.length>=2)
 			newContent = ss[1];
+		else
+			newContent = "";
 		
 
 		try {

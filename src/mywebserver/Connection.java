@@ -2,6 +2,8 @@ package mywebserver;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import BIF.SWE1.interfaces.Plugin;
 import BIF.SWE1.interfaces.Request;
@@ -10,16 +12,21 @@ import BIF.SWE1.interfaces.Response;
 public class Connection implements Runnable {
 
 	static int connections;
+
 	Socket socket;
 	Request req;
 	Response resp;
-
+	public static Lock lock;
+	private Thread t;
+	
 	public Connection(Socket socket) {
 
 		this.socket = socket;
 		connections++;
+
 		System.out.println("Connection: " + connections);
-		run();
+		lock = new ReentrantLock();
+	
 
 	}
 
@@ -74,7 +81,21 @@ public class Connection implements Runnable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	
 
+	
+	}
+
+	public void start()
+	{
+	      if (t == null)
+	      {
+	         t = new Thread (this);
+	         t.start ();
+	      }
+		
+		
 	}
 
 }

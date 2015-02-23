@@ -14,13 +14,13 @@ public class NaviPlugin implements Plugin {
 
 	public static boolean set = false;
 	public static boolean readIn = false;
+	public static boolean readIn2 = false;
+
 
 	@Override
 	public float canHandle(Request req) {
 		String s = req.getUrl().getPath();
 
-		if (s.toUpperCase().equals("/NAVI.READ"))
-			return 0.9f;
 
 		if (s.toUpperCase().equals("/NAVI.HTML")
 				|| s.toUpperCase().equals("/NAVI"))
@@ -29,17 +29,45 @@ public class NaviPlugin implements Plugin {
 		return 0;
 	}
 
+	
 	@Override
 	public Response handle(Request req) {
 
 		Response resp;
+		String street = null;
+		
+		if(req.getMethod().equalsIgnoreCase("POST"))
+			street = RequestImpl.readPostContent(req).trim();
+		
+		/*if(street!=null)
+			System.out.println(street);*/
 
 		if (readIn == true) {
 			resp = naviError(req, 1);
 
 			return resp;
 		}
-
+		
+		if ("readinfile517517".equals(street)){
+			
+				boolean exit = false;
+				Connection.lock.lock();
+				if(NaviPlugin.readIn2)
+					exit = true;
+				else
+					NaviPlugin.readIn=true;
+				Connection.lock.unlock();
+				
+				if(!exit){
+			    NaviPlugin.readIn2 = true;
+			    Navi nv = new Navi();
+			    nv.start();
+				}
+				
+			    resp = naviError(req, 1);			
+		
+			return resp;
+		}
 		if (set == false) {
 
 			resp = naviError(req, 2);
@@ -54,27 +82,42 @@ public class NaviPlugin implements Plugin {
 			return resp;
 		}
 
-		if (req.getUrl().getPath().toUpperCase().equals("/NAVI.READ"))
-			resp = handleRead(req);
-		else
-			resp = handleReq(req);
+
+		
+		resp = handleReq(req, street);
 
 		return resp;
 	}
 
-	private Response handleRead(Request req) {
+	private Response handleReq(Request req, String street) {
 		Response resp = new ResponseImpl();
-		System.out.println("read");
-		return resp;
-	}
+		
+		//solange nicht anderst definiert, kommt die Normale Seite bei Response raus
+		resp = naviError(req,0);
 
-	private Response handleReq(Request req) {
-		Response resp = new ResponseImpl();
-		String city = RequestImpl.readPostContent(req);
-
-		System.out.println("City: " + city);
+		System.out.println("Street: " + street);
 		System.out.println("Handle");
-
+		
+		Navi nv = new Navi();
+		
+		String[] places = nv.find(street);
+		
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("<p> The street \"" + street + "\" is found in the following cities: <br /> <ul>");
+		
+		for(int i = 0; i < places.length; i++){
+			
+			sb.append("<li> " + places[i] + "</li>");
+			
+		}
+		
+		sb.append("</p>");
+		sb.append("<form method=\"GET\" action=\"navi.html\">");
+		sb.append("<input type=\"submit\" value=\" Look up another Street \"></form> <br /> ");
+		
+		resp.setContent(getPageAlterContent(sb.toString()));
+		
 		return resp;
 	}
 
@@ -97,7 +140,7 @@ public class NaviPlugin implements Plugin {
 			content = "<form action=\"navi.html\" method=\"POST\"> \n"
 					+ "<p>Streetname: \n"
 					+ "<br /> "
-					+ "<textarea  name=\"rawtext\" type=\"text\" size=\"30\" maxlength=\"30\"> </textarea> "
+					+ "<textarea  name=\"rawtext\" type=\"text\" size=\"30\" maxlength=\"30\"></textarea> "
 					+ "</p> " + "<input type=\"submit\" value=\" Absenden \"> "
 					+ "</form> " + "<br /> ";
 			break;

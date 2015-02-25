@@ -171,7 +171,7 @@ public class TemperaturePlugin implements Plugin{
 						newContent.append("<th>Temperature1</th>");
 						newContent.append("<th>Temperature2</th>");
 						newContent.append("<th>Temperature3</th>");
-						newContent.append("<tr>");
+						newContent.append("</tr>");
 					}
 					newContent.append("<tr>");
 
@@ -202,7 +202,7 @@ public class TemperaturePlugin implements Plugin{
 			else
 				newContent.append("</Temperaturdaten>");
 			
-			//System.out.println(newContent.toString());
+			
 			
 		} catch (SQLException e) { 
 			
@@ -214,7 +214,11 @@ public class TemperaturePlugin implements Plugin{
 			String[] split = content.toString().split("<div id=\"table\">");
 			resp.setContent(split[0] + "<div id =\"table\">" + newContent.toString() + split[1]);
 		} else {
-			resp.setContent(newContent.toString());
+			if(newContent.toString().equals("</Temperaturdaten>"))
+				resp.setContent("Es wurden keine Temperaturdaten gefunden!");
+			else
+				resp.setContent(newContent.toString());
+		
 		}
 		
 		

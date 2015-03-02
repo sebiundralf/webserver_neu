@@ -27,9 +27,11 @@ public class Navi implements Runnable {
 			
 		}
 		
-		NaviPlugin.readIn = false;
-		NaviPlugin.readIn2= false;
 		NaviPlugin.set = true;
+		NaviPlugin.readIn2= false;
+		NaviPlugin.readIn = false;
+		
+		
 			
 	return;
 		

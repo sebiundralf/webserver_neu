@@ -52,13 +52,13 @@ public class UEB6Impl implements UEB6 {
 	@Override
 	public String getTemperatureRestUrl(Date arg0, Date arg1) {
 		// TODO Auto-generated method stub
-		return "/Temperature";
+		return "/GetTemperature";
 	}
 
 	@Override
 	public String getTemperatureUrl(Date arg0, Date arg1) {
 		// TODO Auto-generated method stub
-		return "/Temperature";
+		return "/Temperature.html";
 	}
 
 	@Override

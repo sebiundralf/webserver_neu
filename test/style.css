@@ -12,6 +12,8 @@ div{
 	padding:50px;
 
 }
+table { page-break-inside:auto }
+tr    { page-break-inside:avoid; page-break-after:auto }
 
 
 .content{
@@ -24,6 +26,34 @@ div{
 
 }
 
+.table{
+
+	text-align:right;
+	border-style:solid;
+	border-width:1px;
+	margin: 0px auto;
+}
+
+.td{
+
+	border-style:solid;
+	border-width:1px;
+
+
+}
+
+#table{
+
+	width: 50%;
+	margin: 0 auto;
+	background-color:  #D0f0B0;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
+
+
+}
+
 #navicont{
 	margin: 0px;
 	padding: 0px;
@@ -33,6 +63,8 @@ div{
 	border-color: #000000;
 
 }
+
+
 
 /* unvisited link */
 

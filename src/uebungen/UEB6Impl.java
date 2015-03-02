@@ -34,7 +34,7 @@ public class UEB6Impl implements UEB6 {
 	@Override
 	public String getNaviUrl() {
 		// TODO Auto-generated method stub
-		return null;
+		return "/navi.html";
 	}
 
 	@Override

@@ -54,12 +54,14 @@ public class NaviPlugin implements Plugin {
 				Connection.lock.lock();
 				if(NaviPlugin.readIn2)
 					exit = true;
-				else
+				else{
 					NaviPlugin.readIn=true;
+					NaviPlugin.readIn2 = true;
+				}
 				Connection.lock.unlock();
 				
 				if(!exit){
-			    NaviPlugin.readIn2 = true;
+			    
 			    Navi nv = new Navi();
 			    nv.start();
 				}
@@ -68,6 +70,7 @@ public class NaviPlugin implements Plugin {
 		
 			return resp;
 		}
+		
 		if (set == false) {
 
 			resp = naviError(req, 2);
